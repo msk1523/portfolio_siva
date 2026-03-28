@@ -1,16 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, FileText, ArrowRight } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 import { content } from '../content';
+import portraitImg from '../assets/siva.jpg';
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-start md:items-center pt-20 overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute top-1/4 -left-20 w-72 h-72 bg-accent-indigo/20 rounded-full blur-[120px]" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent-sky/15 rounded-full blur-[160px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Portrait: bottom fade on mobile; right-side fade on md+ — same fade-in, no layout shift */}
+      <motion.div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[min(42vh,19rem)] sm:h-[min(44vh,22rem)] md:inset-x-auto md:top-20 md:right-0 md:bottom-0 md:left-auto md:h-auto md:w-[min(52%,28rem)] lg:w-[min(48%,32rem)]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <img
+          src={portraitImg}
+          alt={`${content.name}, Software Engineer`}
+          className="h-full w-full object-cover object-[center_25%] sm:object-[center_30%] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] md:object-[center_30%] md:[mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.35)_18%,black_45%)]"
+          loading="eager"
+          decoding="async"
+        />
+      </motion.div>
+
+      <div className="container mx-auto px-6 relative z-10 w-full pb-[min(42vh,19rem)] sm:pb-[min(44vh,22rem)] md:pb-0">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
