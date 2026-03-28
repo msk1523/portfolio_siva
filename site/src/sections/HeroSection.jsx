@@ -56,8 +56,9 @@ export const HeroSection = () => {
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
               <a
-                href="/Resume_Sivakumaran M.pdf"
+                href="/resume-sivakumaran-m.pdf"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="btn-glass flex items-center gap-2"
               >
                 <Download size={18} />
